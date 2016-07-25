@@ -1,0 +1,25 @@
+-cmd haxelib newrepo
+-cmd haxelib install closure
+
+--next
+
+-cp src
+ResourceTiming
+-js dist/resource-timing.js
+-dce std
+
+--next
+-cp src
+-lib closure
+ResourceTiming
+-D closure_overwrite
+-js dist/resource-timing.min.js
+-dce std
+--no-traces
+
+--next
+-cp sample
+-cp src
+-main Main
+-js sample/sample.js
+-dce full
